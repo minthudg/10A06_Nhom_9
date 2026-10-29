@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101522">
+<title>Hóa học 10 · Chuyên đề 2 · Bài 6</title>
+<style>
+:root{--bg:#101522;--panel:#1a2233;--ink:#f4f7fb;--muted:#b7c2d5;--cyan:#6ee7e0;--orange:#ffb454;--pink:#ff718d;--line:#344057}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}body{overflow:hidden}
+.deck{min-height:100svh;display:flex;flex-direction:column;background:radial-gradient(ellipse at 80% 10%,#23334b 0,transparent 38%),radial-gradient(ellipse at 0 100%,#25303e 0,transparent 35%),var(--bg)}
+.top{display:flex;align-items:center;justify-content:space-between;padding:18px 5vw;color:var(--muted);font-size:.84rem;letter-spacing:.08em;text-transform:uppercase}.brand{color:var(--cyan);font-weight:800}.progress{height:3px;background:#293449}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--orange));transition:width .45s ease}
+.stage{flex:1;display:grid;place-items:center;padding:clamp(18px,4vw,56px)}.slide{display:none;width:min(1100px,100%);animation:enter .5s cubic-bezier(.2,.8,.2,1) both}.slide.active{display:block}.eyebrow{color:var(--cyan);font-size:.86rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}.slide h1{font-size:clamp(2.5rem,7vw,6.3rem);line-height:.98;letter-spacing:-.055em;margin:0 0 24px;max-width:1000px}.slide h2{font-size:clamp(2rem,4.5vw,4rem);line-height:1.05;letter-spacing:-.04em;margin:0 0 25px}.lead{font-size:clamp(1.05rem,2vw,1.45rem);line-height:1.65;color:var(--muted);max-width:800px}.accent{color:var(--orange)}.cyan{color:var(--cyan)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:28px}.tile{background:linear-gradient(145deg,#202b40,#171e2c);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,2.5vw,28px);min-height:135px;animation:rise .55s both;animation-delay:var(--d,0ms)}.tile h3{font-size:1.15rem;margin:0 0 10px}.tile p,.tile li{color:var(--muted);line-height:1.6;margin:0}.tile ul{padding-left:20px;margin:0}.big-number{font-size:clamp(2.4rem,5vw,4.5rem);font-weight:900;letter-spacing:-.05em;color:var(--orange)}.formula{display:inline-block;background:#0e1420;border:1px solid #35455e;border-radius:14px;padding:15px 22px;font-size:clamp(1.2rem,3vw,2rem);font-weight:800;letter-spacing:.03em;margin:8px 0}.callout{border-left:4px solid var(--orange);padding:15px 20px;background:#2a2530;border-radius:0 14px 14px 0;color:#ffe4c0;line-height:1.6;margin-top:20px}.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}.step{border-top:3px solid var(--cyan);padding:20px 16px;background:#1b2535;border-radius:0 0 16px 16px;animation:rise .55s both;animation-delay:var(--d,0ms)}.step b{display:block;font-size:1.15rem;margin-bottom:9px}.step p{margin:0;color:var(--muted);line-height:1.55}.footer{display:flex;align-items:center;justify-content:space-between;padding:16px 5vw 22px;gap:16px}.controls{display:flex;gap:10px}.btn{border:1px solid #46546a;background:#202b3d;color:var(--ink);padding:11px 18px;border-radius:999px;font-weight:750;cursor:pointer;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px);background:#2a3a50}.btn.primary{background:var(--cyan);border-color:var(--cyan);color:#101522}.btn:disabled{opacity:.35;cursor:not-allowed;transform:none}.count{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.9rem}.quiz{display:grid;gap:16px;margin-top:18px}.question{background:#1a2435;border:1px solid var(--line);border-radius:16px;padding:20px;animation:rise .5s both;animation-delay:var(--d,0ms)}.question h3{font-size:1.05rem;line-height:1.5;margin:0 0 14px}.option{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid #39465b;border-radius:12px;margin-top:8px;cursor:pointer;color:var(--muted);line-height:1.4}.option:has(input:checked){border-color:var(--cyan);background:#20363d;color:var(--ink)}.option input{accent-color:var(--cyan);margin-top:3px}.feedback{margin-top:10px;font-weight:700;line-height:1.5}.good{color:var(--cyan)}.bad{color:var(--pink)}.quiz-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.score{font-size:1.2rem;font-weight:850}.small{font-size:.9rem;color:var(--muted);line-height:1.55}.fire{font-size:clamp(4rem,10vw,8rem);display:inline-block;filter:drop-shadow(0 0 28px #ff854766);animation:flicker 1.7s ease-in-out infinite alternate}.pill{display:inline-block;border:1px solid #44536b;color:var(--muted);border-radius:999px;padding:7px 12px;margin:4px 5px 0 0;font-size:.88rem}
+@keyframes enter{from{opacity:0;transform:translateX(35px) scale(.985)}to{opacity:1;transform:translateX(0) scale(1)}}@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes flicker{from{transform:rotate(-2deg) scale(.98)}to{transform:rotate(2deg) scale(1.04)}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}@media(max-width:680px){body{overflow:auto}.deck{min-height:100svh}.top{padding:14px 5vw}.stage{align-items:start;padding:30px 5vw}.grid,.steps{grid-template-columns:1fr}.tile{min-height:0}.footer{padding:12px 5vw 20px;flex-wrap:wrap}.slide h1{font-size:clamp(2.7rem,14vw,4.7rem)}.slide h2{font-size:2.4rem}.controls .btn{padding:10px 14px}.question{padding:15px}}
+</style>
+</head>
+<body>
+<div class="deck">
+<header class="top"><span class="brand">HÓA HỌC 10</span><span>Chuyên đề 2 · Bài 6</span></header>
+<div class="progress" aria-label="Tiến độ bài trình chiếu"><span id="bar"></span></div>
+<main class="stage" id="stage">
+<section class="slide active">
+<div class="eyebrow">Bài học tương tác · Nhóm 9</div><div class="fire" aria-hidden="true">🔥</div>
+<h1>Điểm chớp cháy<br><span class="accent"> & phản ứng cháy</span></h1>
+<p class="lead">Hiểu vì sao chất bắt lửa, phản ứng cháy diễn ra như thế nào và cách phòng ngừa — ứng phó an toàn khi có cháy.</p>
+<div style="margin-top:24px"><span class="pill">Khái niệm</span><span class="pill">Hóa học</span><span class="pill">Phòng chống cháy</span></div>
+</section>
+<section class="slide">
+<div class="eyebrow">01 · Khái niệm cốt lõi</div><h2>Điểm chớp cháy là gì?</h2>
+<p class="lead">Là nhiệt độ thấp nhất tại điều kiện thử nghiệm xác định mà chất lỏng tạo đủ hơi để hơi có thể <b class="accent">bốc cháy thoáng qua</b> khi gặp nguồn mồi lửa.</p>
+<div class="grid"><article class="tile" style="--d:80ms"><h3>🌡️ Nhiệt độ càng thấp</h3><p>Chất lỏng càng có thể tạo hỗn hợp hơi dễ bắt lửa ở nhiệt độ môi trường thấp hơn.</p></article><article class="tile" style="--d:180ms"><h3>💨 Hơi mới là thứ cháy</h3><p>Trong nhiều đám cháy chất lỏng, hơi nhiên liệu trộn với oxygen trong không khí rồi bắt cháy.</p></article></div>
+<div class="callout">Điểm chớp cháy không đồng nghĩa với nhiệt độ tự bốc cháy hay nhiệt độ sôi.</div>
+</section>
+<section class="slide">
+<div class="eyebrow">02 · Phân biệt</div><h2>Ba khái niệm, đừng nhầm lẫn</h2>
+<div class="grid"><article class="tile" style="--d:0ms"><div class="big-number">01</div><h3>Điểm chớp cháy</h3><p>Hơi chất có thể bùng cháy thoáng qua khi có nguồn mồi lửa.</p></article><article class="tile" style="--d:100ms"><div class="big-number">02</div><h3>Nhiệt độ tự bốc cháy</h3><p>Nhiệt độ mà chất có thể tự bắt cháy trong điều kiện thích hợp mà không cần tia lửa hay ngọn lửa bên ngoài.</p></article><article class="tile" style="--d:200ms"><div class="big-number">03</div><h3>Nhiệt độ bắt cháy / cháy duy trì</h3><p>Trong thử nghiệm, cần phân biệt sự lóe cháy thoáng qua với việc cháy tiếp tục duy trì.</p></article><article class="tile" style="--d:300ms"><h3>📌 Ghi nhớ</h3><p>Các giá trị phụ thuộc phương pháp thử và điều kiện đo; không tự suy ra mức độ an toàn chỉ từ một con số.</p></article></div>
+</section>
+<section class="slide">
+<div class="eyebrow">03 · Hóa học của sự cháy</div><h2>Cháy là một phản ứng hóa học</h2>
+<p class="lead">Sự cháy thường là phản ứng oxi hóa nhanh, tỏa nhiệt và thường phát sáng giữa chất cháy với chất oxi hóa (thường là oxygen).</p>
+<div class="formula">Chất cháy + O₂ → Sản phẩm + nhiệt</div>
+<div class="grid"><article class="tile" style="--d:100ms"><h3>Ví dụ: methane cháy hoàn toàn</h3><div class="formula">CH₄ + 2O₂ → CO₂ + 2H₂O</div><p>Phương trình đã cân bằng; phản ứng tỏa năng lượng.</p></article><article class="tile" style="--d:200ms"><h3>Không đủ oxygen</h3><p>Có thể xảy ra cháy không hoàn toàn, tạo carbon monoxide (CO) và/hoặc muội than. CO là khí độc, không màu, không mùi.</p></article></div>
+</section>
+<section class="slide">
+<div class="eyebrow">04 · Điều kiện cháy</div><h2>Muốn có lửa cần đủ điều kiện</h2>
+<div class="steps"><div class="step" style="--d:0ms"><b>① Chất cháy</b><p>Gỗ, giấy, hơi xăng, khí gas…</p></div><div class="step" style="--d:120ms"><b>② Chất oxi hóa</b><p>Thường là oxygen trong không khí.</p></div><div class="step" style="--d:240ms"><b>③ Nguồn nhiệt</b><p>Tia lửa, bề mặt nóng, ngọn lửa… đủ để mồi cháy.</p></div></div>
+<div class="callout">Loại bỏ một trong các điều kiện trên có thể làm đám cháy không hình thành hoặc bị dập tắt. Một số đám cháy có thể tiếp tục phản ứng dây chuyền nên cần phương tiện phù hợp.</div>
+</section>
+<section class="slide">
+<div class="eyebrow">05 · Dập tắt an toàn</div><h2>Cắt điều kiện duy trì đám cháy</h2>
+<div class="grid"><article class="tile" style="--d:0ms"><h3>🧊 Làm mát</h3><p>Hạ nhiệt độ vật cháy xuống dưới mức cần thiết để duy trì cháy, ví dụ dùng nước với vật liệu phù hợp.</p></article><article class="tile" style="--d:100ms"><h3>🫧 Cách ly oxygen</h3><p>Dùng nắp đậy hoặc chất chữa cháy phù hợp để hạn chế tiếp xúc với không khí.</p></article><article class="tile" style="--d:200ms"><h3>⛽ Loại bỏ nhiên liệu</h3><p>Nếu an toàn, khóa nguồn nhiên liệu hoặc đưa vật dễ cháy ra xa.</p></article><article class="tile" style="--d:300ms"><h3>⚠️ Chọn đúng cách</h3><p>Không đổ nước vào dầu đang cháy hay thiết bị điện còn mang điện. Không tự xử lý đám cháy lớn.</p></article></div>
+</section>
+<section class="slide">
+<div class="eyebrow">06 · Phòng chống cháy</div><h2>Phòng ngừa trước khi có sự cố</h2>
+<div class="steps"><div class="step" style="--d:0ms"><b>Bảo quản</b><p>Đậy kín, dán nhãn hóa chất; để xa nguồn nhiệt, tia lửa và nơi sinh hoạt.</p></div><div class="step" style="--d:120ms"><b>Sử dụng</b><p>Thông gió tốt; không hút thuốc gần nhiên liệu; kiểm tra dây điện và thiết bị gas.</p></div><div class="step" style="--d:240ms"><b>Chuẩn bị</b><p>Biết vị trí lối thoát hiểm, chuông báo cháy, bình chữa cháy; thực hành sơ tán.</p></div></div>
+<div class="callout">Nếu cháy xảy ra: báo động, gọi lực lượng cứu hỏa địa phương (ở Việt Nam: 114), sơ tán theo lối an toàn và không quay lại lấy đồ.</div>
+</section>
+<section class="slide">
+<div class="eyebrow">07 · Khi có cháy</div><h2>An toàn là ưu tiên số một</h2>
+<div class="grid"><article class="tile" style="--d:0ms"><h3>✅ Nên làm</h3><ul><li>Báo động và gọi 114.</li><li>Di chuyển cúi thấp nếu có khói; che mũi miệng bằng vải nếu có thể.</li><li>Dùng cầu thang bộ, đi theo lối thoát hiểm.</li><li>Chỉ dùng bình chữa cháy khi đám cháy nhỏ, có lối thoát phía sau và đã được hướng dẫn.</li></ul></article><article class="tile" style="--d:140ms"><h3>⛔ Không nên</h3><ul><li>Không dùng thang máy.</li><li>Không mở cửa nóng hoặc đi vào vùng nhiều khói.</li><li>Không dùng nước với cháy dầu mỡ hay thiết bị điện đang có điện.</li><li>Không mạo hiểm quay lại khu vực cháy.</li></ul></article></div>
+</section>
+<section class="slide">
+<div class="eyebrow">08 · Củng cố kiến thức</div><h2>Trắc nghiệm cuối bài</h2>
+<p class="lead">Chọn một đáp án cho mỗi câu rồi nhấn <b class="cyan">Chấm bài</b>. Hệ thống sẽ báo đúng/sai và giải thích từng câu.</p>
+<form class="quiz" id="quiz">
+<div class="question" style="--d:0ms" data-answer="B" data-explain="Điểm chớp cháy là nhiệt độ thấp nhất theo phép thử xác định mà hơi có thể bốc cháy thoáng qua khi có nguồn mồi lửa."><h3>1. Điểm chớp cháy của chất lỏng mô tả điều gì?</h3><label class="option"><input type="radio" name="q1" value="A"> Nhiệt độ sôi của chất lỏng</label><label class="option"><input type="radio" name="q1" value="B"> Nhiệt độ thấp nhất để hơi có thể lóe cháy khi có nguồn mồi lửa theo điều kiện thử</label><label class="option"><input type="radio" name="q1" value="C"> Nhiệt độ đông đặc</label><div class="feedback" aria-live="polite"></div></div>
+<div class="question" style="--d:80ms" data-answer="C" data-explain="Sự cháy thường là phản ứng oxi hóa nhanh, tỏa nhiệt; oxygen thường đóng vai trò chất oxi hóa."><h3>2. Mô tả nào phù hợp nhất với sự cháy thông thường?</h3><label class="option"><input type="radio" name="q2" value="A"> Phản ứng thu nhiệt, không cần chất oxi hóa</label><label class="option"><input type="radio" name="q2" value="B"> Chỉ là sự thay đổi trạng thái vật lý</label><label class="option"><input type="radio" name="q2" value="C"> Phản ứng oxi hóa nhanh, thường tỏa nhiệt và phát sáng</label><div class="feedback" aria-live="polite"></div></div>
+<div class="question" style="--d:160ms" data-answer="A" data-explain="Phương trình cân bằng là CH₄ + 2O₂ → CO₂ + 2H₂O."><h3>3. Phương trình nào biểu diễn đúng phản ứng cháy hoàn toàn của methane?</h3><label class="option"><input type="radio" name="q3" value="A"> CH₄ + 2O₂ → CO₂ + 2H₂O</label><label class="option"><input type="radio" name="q3" value="B"> CH₄ + O₂ → C + H₂O</label><label class="option"><input type="radio" name="q3" value="C"> CH₄ → CO₂ + H₂</label><div class="feedback" aria-live="polite"></div></div>
+<div class="question" style="--d:240ms" data-answer="B" data-explain="Nước có thể làm dầu đang cháy bắn tung tóe và lan rộng; không dùng nước để dập cháy dầu mỡ."><h3>4. Khi dầu ăn trong chảo bốc cháy, việc nào sau đây cần tránh?</h3><label class="option"><input type="radio" name="q4" value="A"> Nếu an toàn, tắt bếp</label><label class="option"><input type="radio" name="q4" value="B"> Đổ nước vào chảo đang cháy</label><label class="option"><input type="radio" name="q4" value="C"> Đậy nắp kim loại phù hợp nếu có thể làm an toàn</label><div class="feedback" aria-live="polite"></div></div>
+<div class="question" style="--d:320ms" data-answer="C" data-explain="Khi có cháy, hãy báo động, gọi 114 ở Việt Nam và sơ tán theo lối an toàn; không dùng thang máy."><h3>5. Khi phát hiện đám cháy trong tòa nhà, nên làm gì?</h3><label class="option"><input type="radio" name="q5" value="A"> Dùng thang máy để xuống nhanh hơn</label><label class="option"><input type="radio" name="q5" value="B"> Quay lại lấy tài sản trước khi thoát</label><label class="option"><input type="radio" name="q5" value="C"> Báo động, gọi 114 và thoát theo lối thoát hiểm</label><div class="feedback" aria-live="polite"></div></div>
+<div class="quiz-actions"><button class="btn primary" type="submit">Chấm bài</button><button class="btn" type="button" id="reset">Làm lại</button><span class="score" id="score" aria-live="polite"></span></div>
+</form>
+</section>
+<section class="slide">
+<div class="eyebrow">09 · Tổng kết</div><h2>Nhớ 3 điều quan trọng</h2>
+<div class="grid"><article class="tile" style="--d:0ms"><div class="big-number">01</div><h3>Hiểu điểm chớp cháy</h3><p>Cho biết khả năng hơi chất lỏng bắt lửa thoáng qua khi có nguồn mồi lửa trong điều kiện thử xác định.</p></article><article class="tile" style="--d:100ms"><div class="big-number">02</div><h3>Hiểu phản ứng cháy</h3><p>Thường là phản ứng oxi hóa nhanh, tỏa nhiệt; cần điều kiện thích hợp để bắt đầu và duy trì.</p></article><article class="tile" style="--d:200ms"><div class="big-number">03</div><h3>Phòng cháy, thoát nạn</h3><p>Ngăn nguồn gây cháy, chọn đúng phương tiện chữa cháy và ưu tiên sơ tán an toàn.</p></article><article class="tile" style="--d:300ms"><h3>📚 Tài liệu tham khảo</h3><p>SGK Chuyên đề học tập Hóa học 10, Chuyên đề 2 – Bài 6 (tài liệu người học cung cấp). Nội dung tóm lược phục vụ học tập; luôn tuân thủ hướng dẫn an toàn và quy định tại địa phương.</p><p style="margin-top:10px"><a href="https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-chuyen-de-hoc-tap-hoa-hoc-10.4700858540#page=35" target="_blank" rel="noopener" style="color:var(--cyan)">Mở tài liệu SGK ↗</a></p></article></div>
+</section>
+</main>
+<footer class="footer"><span class="count" id="count">01 / 10</span><div class="controls"><button class="btn" id="prev" type="button" disabled>← Trước</button><button class="btn primary" id="next" type="button">Tiếp theo →</button></div><span class="small">Dùng phím ← → để chuyển slide</span></footer>
+</div>
+<script>
+(() => {
+ const slides = [...document.querySelectorAll('.slide')];
+ const prev = document.getElementById('prev'), next = document.getElementById('next');
+ const count = document.getElementById('count'), bar = document.getElementById('bar');
+ let current = 0;
+ function show(n) {
+   current = Math.max(0, Math.min(slides.length - 1, n));
+   slides.forEach((s,i) => { s.classList.toggle('active', i === current); s.setAttribute('aria-hidden', i !== current); });
+   count.textContent = String(current+1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
+   bar.style.width = ((current+1)/slides.length*100)+'%';
+   prev.disabled = current === 0; next.disabled = current === slides.length-1;
+   document.getElementById('stage').scrollTop = 0;
+ }
+ prev.addEventListener('click',()=>show(current-1)); next.addEventListener('click',()=>show(current+1));
+ document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();show(current+1)}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(current-1)}});
+ let startX = null;
+ document.getElementById('stage').addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
+ document.getElementById('stage').addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>70)show(current+(dx<0?1:-1));startX=null},{passive:true});
+ const form = document.getElementById('quiz');
+ form.addEventListener('submit',e=>{
+   e.preventDefault();let score=0;const questions=[...form.querySelectorAll('.question')];
+   questions.forEach((q,i)=>{const chosen=q.querySelector('input:checked');const fb=q.querySelector('.feedback');const correct=chosen&&chosen.value===q.dataset.answer;if(correct)score++;fb.className='feedback '+(correct?'good':'bad');fb.textContent=(correct?'✓ Chính xác! ':'✗ Chưa đúng. Đáp án: '+q.dataset.answer+'. ')+q.dataset.explain;});
+   document.getElementById('score').textContent='Kết quả: '+score+'/'+questions.length+' câu đúng';
+ });
+ document.getElementById('reset').addEventListener('click',()=>{form.reset();form.querySelectorAll('.feedback').forEach(f=>{f.textContent='';f.className='feedback'});document.getElementById('score').textContent='';});
+ show(0);
+})();
+</script>
+</body>
+</html>
