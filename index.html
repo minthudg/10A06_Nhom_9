@@ -197,6 +197,39 @@ footer{height:60px;padding:0 4.5vw}
  .flow{margin-top:10px}
  .flow-item{padding:11px 13px}
 }
+
+/* ANIMATION ĐỘNG THỰC SỰ – vật thể chuyển động liên tục và nội dung vào theo nhịp */
+.slide.active .kicker{animation:animSlideDown .55s ease both}
+.slide.active h1,.slide.active h2{animation:animTitle .8s cubic-bezier(.16,1,.3,1) both}
+.slide.active .lead{animation:animText .75s .25s ease both}
+.slide.active .note{animation:animText .7s .55s ease both}
+.slide.active .card,.slide.active .flow-item,.slide.active .safety-row{animation:animCard .72s ease both}
+.slide.active .card:nth-of-type(2),.slide.active .flow-item:nth-of-type(2),.slide.active .safety-row:nth-of-type(2){animation-delay:.18s}
+.slide.active .card:nth-of-type(3),.slide.active .flow-item:nth-of-type(3),.slide.active .safety-row:nth-of-type(3){animation-delay:.36s}
+.slide.active .card:nth-of-type(4){animation-delay:.54s}
+.slide.active .hero-art{animation:animFloat 4s ease-in-out infinite}
+.hero-art .orb{animation:animOrbit 12s linear infinite}
+.hero-art .flame{animation:animFlame 1.35s ease-in-out infinite alternate;transform-origin:50% 85%}
+.visual-panel:after{animation:animPulse 2.4s ease-in-out infinite}
+.thermo:after{animation:animMercury 1.7s ease-in-out infinite alternate}
+.triangle{animation:animHover 3s ease-in-out infinite!important}
+.slide.active .equation{animation:animGlow 2s ease-in-out infinite alternate}
+.slide.active .tag{animation:animTag .6s ease both}
+.slide.active .tag:nth-child(2){animation-delay:.12s}.slide.active .tag:nth-child(3){animation-delay:.24s}.slide.active .tag:nth-child(4){animation-delay:.36s}
+@keyframes animSlideDown{from{opacity:0;transform:translateY(-32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes animTitle{from{opacity:0;transform:translateX(-65px) scale(.94);filter:blur(6px)}to{opacity:1;transform:translateX(0) scale(1);filter:blur(0)}}
+@keyframes animText{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@keyframes animCard{from{opacity:0;transform:translateY(55px) scale(.9) rotateX(10deg)}to{opacity:1;transform:translateY(0) scale(1) rotateX(0)}}
+@keyframes animFloat{0%,100%{transform:translateY(-45%)}50%{transform:translateY(calc(-45% - 22px))}}
+@keyframes animOrbit{to{transform:rotate(360deg)}}
+@keyframes animFlame{from{transform:scale(.88,1) rotate(-5deg)}to{transform:scale(1.1,1.08) rotate(5deg)}}
+@keyframes animPulse{0%,100%{transform:scale(.86);opacity:.4}50%{transform:scale(1.13);opacity:1}}
+@keyframes animMercury{from{height:68px}to{height:145px}}
+@keyframes animHover{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-17px) rotate(2deg)}}
+@keyframes animGlow{from{box-shadow:0 0 0 #69e5e100}to{box-shadow:0 0 28px #69e5e155}}
+@keyframes animTag{from{opacity:0;transform:translateY(18px) scale(.8)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.slide.active *,.hero-art,.hero-art .orb,.hero-art .flame,.visual-panel:after,.thermo:after,.triangle{animation:none!important}}
+
 </style>
 </head>
 <body><div class="deck"><div class="noise"></div>
