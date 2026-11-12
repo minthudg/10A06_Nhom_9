@@ -261,6 +261,38 @@ let qi=0,score=0,locked=false;const qtext=document.getElementById('qtext'),answe
 function render(){locked=false;const q=questions[qi];qnumber.textContent='Câu '+(qi+1)+' / '+questions.length;qtext.textContent=q.q;qprogress.style.width=qi/questions.length*100+'%';answers.innerHTML='';q.a.forEach((v,i)=>{const b=document.createElement('button');b.className='answer';b.textContent=String.fromCharCode(65+i)+'. '+v;b.onclick=()=>choose(i);answers.appendChild(b)});explain.textContent='Chọn một đáp án để xem kết quả và lời giải thích.';qnext.disabled=true;qnext.textContent=qi===questions.length-1?'Xem kết quả':'Câu tiếp theo →';qscore.textContent='Điểm: '+score+'/'+questions.length;qrestart.style.display='none'}
 function choose(i){if(locked)return;locked=true;const q=questions[qi];[...answers.children].forEach((b,j)=>{b.disabled=true;if(j===q.c)b.classList.add('correct');if(j===i&&i!==q.c)b.classList.add('incorrect')});if(i===q.c)score++;explain.textContent=(i===q.c?'Chính xác! ':'Chưa chính xác. Đáp án đúng là '+String.fromCharCode(65+q.c)+'. ')+q.e;qnext.disabled=false;qscore.textContent='Điểm: '+score+'/'+questions.length;qprogress.style.width=(qi+1)/questions.length*100+'%'}
 qnext.onclick=()=>{if(!locked)return;if(qi<questions.length-1){qi++;render()}else{qtext.textContent='Em đã hoàn thành phần trắc nghiệm!';answers.innerHTML='';explain.textContent='Kết quả: '+score+'/'+questions.length+' câu đúng. '+(score===5?'Rất tốt!':score>=3?'Em đã nắm được phần lớn kiến thức.':'Hãy xem lại nội dung bài rồi thử lại nhé.');qnumber.textContent='Hoàn thành';qprogress.style.width='100%';qnext.disabled=true;qnext.style.display='none';qrestart.style.display='inline-block';qscore.textContent='Kết quả: '+score+'/'+questions.length}};qrestart.onclick=()=>{qi=0;score=0;qnext.style.display='inline-block';render()};render();
+// Chuyển động liên tục bằng Web Animations API (không bị CSS reduced-motion tắt).
+function runMotion(){
+  const motion=(selector,keyframes,options)=>{
+    document.querySelectorAll(selector).forEach((el)=>el.animate(keyframes,{duration:options.duration,iterations:Infinity,direction:options.direction||'alternate',easing:options.easing||'ease-in-out'}));
+  };
+  motion('.hero-art',[
+    {transform:'translateY(-45%) translateX(0) scale(1)'},
+    {transform:'translateY(calc(-45% - 26px)) translateX(10px) scale(1.035)'}
+  ],{duration:1900});
+  motion('.hero-art .flame',[
+    {transform:'scale(.82,1.04) rotate(-7deg)'},
+    {transform:'scale(1.12,.94) rotate(7deg)'}
+  ],{duration:520});
+  motion('.hero-art .orb',[
+    {transform:'rotate(0deg) scale(1)'},
+    {transform:'rotate(180deg) scale(1.12)'},
+    {transform:'rotate(360deg) scale(1)'}
+  ],{duration:6500,direction:'normal'});
+  motion('.visual-panel:after',[
+    {transform:'scale(.72)',opacity:.22},
+    {transform:'scale(1.18)',opacity:.95}
+  ],{duration:1050});
+  motion('.thermo:after',[
+    {height:'65px'},
+    {height:'145px'}
+  ],{duration:850});
+  motion('.triangle',[
+    {transform:'translateY(0) rotate(-5deg) scale(.94)'},
+    {transform:'translateY(-22px) rotate(5deg) scale(1.06)'}
+  ],{duration:1000});
+}
+runMotion();
 let sx=null;document.getElementById('stage').addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX,{passive:true});document.getElementById('stage').addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>70)show(at+(dx<0?1:-1));sx=null},{passive:true});
 })();
 </script></body></html>
